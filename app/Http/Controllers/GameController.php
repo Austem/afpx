@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use RAE\RAE;
+use App\Service\typingService;
+
 
 class GameController extends Controller
 {
-    public function palabraDelDia(){
-        $rae = new RAE(true);
-        $search = $rae->searchWord('hola');
-        $wordId = $search->getRes()[0]->getId();
+    private $typingService;
 
-        $result = $rae->fetchWord($wordId);
-        dd($result, $wordId);
-        $definitions = $result->getDefinitions();
+    public function __construct(typingService $typingService)
+    {
+        $this->typingService = $typingService;
+    }
 
-        $i = 1;
-        foreach ($definitions as $definition) {
-            echo $i.'. Tipo: '.$definition->getType()."\n";
-            echo '   Definición: '.$definition->getDefinition()."\n\n";
-            $i++;
-        }
+    public function iniciar(){
 
-        return view('typingw');
+        $palabras = $this->typingService->obtenerPalabras();
 
+        return view('typingw', compact('palabras'));
     }
 }

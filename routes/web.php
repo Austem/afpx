@@ -21,4 +21,4 @@ Route::get('afpx', 'ScrapeController');
 
 Route::get('afpx', 'ScrapeController')->name('cambiarAfp');
 
-Route::get('typingw', 'GameController@palabraDelDia');
+Route::get('typingw', 'GameController@iniciar');

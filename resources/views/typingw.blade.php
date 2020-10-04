@@ -1,12 +1,16 @@
 @extends('layouts.master')
 
-@section('content')}
+@section('content')
     <div class="container">
-        <div>
+        @foreach($palabras as $key => $item)
+            <p>{{$key}}</p>
 
+            @foreach($item as $def)
+                <p>{{$def}}</p>
 
-        </div>
-
+            @endforeach
+        @endforeach
     </div>
+
 
 @endsection
