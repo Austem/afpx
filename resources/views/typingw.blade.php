@@ -1,18 +1,27 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        @foreach($palabras as $key => $item)
-            <p>{{$key}}</p>
-
-            @foreach($item as $def)
-                <p>{{$def}}</p>
-
-            @endforeach
-        @endforeach
+    <div class="container-fluid bg-primary h-full">
+        <div class="row">
+            <div class="col-3">
+                Score:
+            </div>
+            <div class="col-6">
+                <div class="form-group border text-center">
+                    Palabra
+                    <br>
+                    -Definicion de la palabra
+                    <div>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                Vidas:
+            </div>
+        </div>
     </div>
-
-
 @endsection
 
 @section('scripts')

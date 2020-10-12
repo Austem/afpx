@@ -18,9 +18,9 @@ class typingService{
 
         $palabras = $this->traerPalabras();
 
-        $palabrasDefinicion = $this->traerDefinicion($palabras);
+       // $palabrasDefinicion = $this->traerDefinicion($palabras);
 
-        return $palabrasDefinicion;
+        return $palabras;
 
     }
 
