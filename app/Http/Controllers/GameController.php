@@ -16,8 +16,10 @@ class GameController extends Controller
 
     public function iniciar(){
 
-        $palabras = $this->typingService->obtenerPalabras();
+        $palabrasYDefiniciones = $this->typingService->obtenerPalabras();
+        $palabras = $palabrasYDefiniciones['palabras'];
+        $definiciones = $palabrasYDefiniciones['definiciones'];
 
-        return view('typingw', compact('palabras'));
+        return view('typingw', compact('palabras','definiciones'));
     }
 }

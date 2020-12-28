@@ -5,7 +5,8 @@ namespace App\Service;
 use Goutte\Client;
 
 
-class typingService{
+class typingService
+{
 
     private $client;
 
@@ -14,47 +15,53 @@ class typingService{
         $this->client = $client;
     }
 
-    public function obtenerPalabras(){
+    public function obtenerPalabras()
+    {
 
         $palabras = $this->traerPalabras();
+        $definiciones = $this->traerDefinicion($palabras);
+        // $palabrasDefinicion = $this->traerDefinicion($palabras);
 
-       // $palabrasDefinicion = $this->traerDefinicion($palabras);
-
-        return $palabras;
+        return [
+            'palabras' => $palabras,
+            'definiciones' => $definiciones,
+        ];
 
     }
 
-    public function traerPalabras(){
+    public function traerPalabras()
+    {
 
         $pagina[] = $this->client->request(
             'GET',
             'https://www.palabrasaleatorias.com/?fs=10&fs2=0&Submit=Nueva+palabra');
 
-        $palabrasBase[] = $pagina[0]->filter('div')->each(function ($item){
+        $palabrasBase[] = $pagina[0]->filter('div')->each(function ($item) {
             return $item->text();
         });
 
         unset($palabrasBase[0][0]);
         unset($palabrasBase[0][11]);
 
-       foreach ($palabrasBase as $palabraBase){
-           foreach ($palabraBase as $item){
-               $palabras[] = $item;
-           }
-       }
+        foreach ($palabrasBase as $palabraBase) {
+            foreach ($palabraBase as $item) {
+                $palabras[] = $item;
+            }
+        }
 
-       return $palabras;
+        return $palabras;
     }
 
-    public function traerDefinicion($palabras){
+    public function traerDefinicion($palabras)
+    {
 
-        foreach ($palabras as $palabra){
+        foreach ($palabras as $palabra) {
 
             $pagina = $this->client->request(
                 'GET',
-                'https://dle.rae.es/'.$palabra);
+                'https://dle.rae.es/' . strtolower($palabra));
 
-            $palabrasBase = $pagina->filter('.j')->each(function ($item){
+            $palabrasBase = $pagina->filter('.j')->each(function ($item) {
                 return $item->text();
             });
 

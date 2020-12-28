@@ -9,13 +9,27 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        #formulario {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            opacity:1;
+            transition: opacity .7s;
+        }
+
+        #formulario.fade {
+            opacity:0;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="/">
-        <img src="/image/logo-victor-alpha.png" alt="logo" style="width:40px;">
+        <img src="/images/logo-victor-alpha.png" alt="logo" style="width:40px;">
     </a>
 
     <!-- Links -->
